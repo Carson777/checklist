@@ -36,6 +36,7 @@ header {
 h5 {
 	text-transform: uppercase;
 	color: $primary-color;
+	display: inline-block;
 }
 
 a, a:link, a:hover, a:visited {
@@ -55,6 +56,21 @@ a:hover, a h1:hover {
 		border-bottom: 1px solid #CCC;
 		&:hover {
 			background-color: lighten($secondary-color, 35);
+		}
+		p.untoggled {
+			overflow: hidden;
+			transition: all 0.3s ease;
+			height: 0;
+			min-height: 0;
+			margin: 0 0.5rem;
+		}
+		p.toggled {
+			overflow: visible;
+			transition: all 0.3s ease;
+			height: auto; 
+			min-height: 0;
+			margin: 0.5rem;
+
 		}
 	}
 }
