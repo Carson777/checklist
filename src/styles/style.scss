@@ -1,10 +1,46 @@
+$primary-color: fuchsia;
+$secondary-color: orange;
+$hover-color: #F6F6F6;
+
 * {
 	font-family: Helvetica, Arial, sans-serif;
 	box-sizing: border-box;
 }
-
-h1 {
-	font-size: 300px;
+header {
 	text-align: center;
-	color: fuchsia;
+	h1 {
+		font-size: 36px;
+		text-align: center;
+		color: $primary-color;
+	}
+	input[type="text"]{
+		font-size: 18px;
+		padding: 5px 10px;
+	}
+}
+
+p {
+	text-transform: uppercase;
+	color: $primary-color;
+}
+
+a, a:link, a:hover, a:visited {
+	text-decoration: none;
+}
+a:hover, a h1:hover{
+	color: $secondary-color;
+}
+
+.article-container{
+	.article {
+		cursor: pointer;
+		padding: 0.5rem 0.5rem 1rem;
+		border-bottom: 1px solid #CCC;
+		&:hover {
+			background-color: $hover-color;
+		}
+		p{
+			overflow: hidden;
+		}
+	}
 }
