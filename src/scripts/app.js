@@ -45,10 +45,7 @@ var app = function() {
 				}
 			})
 			console.log(articleCollection)
-			promise.then(
-				function(){
-					ReactDOM.render(<ListView collection={articleCollection} />, document.querySelector(".container"))
-				})
+			ReactDOM.render(<ListView collection={articleCollection} />, document.querySelector(".container"))
 
 			// same as
 			// var testResponse = function() {

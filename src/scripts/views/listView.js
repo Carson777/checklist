@@ -33,16 +33,37 @@ var ListView = React.createClass({
 		}
 		coll.on("sync", updateState)
 	},
+	_filterForNews: function() {
+		var decider = function(model) {
+			if (model.get('type_of_material') === 'News') {
+				return true
+			}
+			else false
+		}
+		var newsOnly = this.props.collection.filter(decider)
+		this.setState({
+			collection: newsOnly
+		})
+	},
+	_filterForAll: function() {
+		this.setState({
+			collection: this.props.collection
+		})
+	},
 	render: function(){
 		return (
 			<div className="list-view">
 				<Header />
+				<div className="butts">
+					<button onClick={this._filterForNews}>news only</button>
+					<button onClick={this._filterForAll}>all</button>
+				</div>
 				<ArticleContainer 
 					collection={this.state.collection} 
 					loaded={this.state.isLoaded}
 					/>
 			</div>
-			)
+		)
 	}
 })
 
@@ -55,6 +76,9 @@ var ArticleContainer = React.createClass({
 		}
 		return jsxArray
 	},
+	// _makeArticle: function() {
+
+	// },
 	render: function(){
 		var styleObject = {
 			display: this.props.loaded? 'none' : 'inline'
@@ -64,7 +88,7 @@ var ArticleContainer = React.createClass({
 				<img src="loading.gif" style={styleObject} />
 				{this._makeArticles()}
 			</div>
-			)
+		)
 	}
 })
 
