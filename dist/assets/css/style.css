@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 *{font-family:Helvetica, Arial, sans-serif;box-sizing:border-box}header{text-align:center}header h1{font-size:36px;text-align:center;color:#f0f}header input[type="text"]{font-size:18px;padding:5px 10px}p{text-transform:uppercase;color:#f0f}a,a:link,a:hover,a:visited{text-decoration:none}a:hover,a h1:hover{color:orange}.article-container .article{cursor:pointer;padding:0.5rem 0.5rem 1rem;border-bottom:1px solid #CCC}.article-container .article:hover{background-color:#F6F6F6}.article-container .article p{overflow:hidden}
+=======
+*{font-family:Helvetica, Arial, sans-serif;box-sizing:border-box}.butts{text-align:center}.butts button{font-size:1rem}header{text-align:center}header h1{font-size:36px;text-align:center;color:#f0f}header input[type="text"]{font-size:18px;padding:5px 10px}p{text-transform:uppercase;color:#f0f}a,a:link,a:hover,a:visited{text-decoration:none}a:hover,a h1:hover{color:orange}.article-container .article{cursor:pointer;padding:0.5rem 0.5rem 1rem;border-bottom:1px solid #CCC}.article-container .article:hover{background-color:#F6F6F6}.article-container .article p{overflow:hidden}
+>>>>>>> ee12073f3b6ccf933270af2544fe42979dfdab25
