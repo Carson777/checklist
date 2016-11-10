@@ -33,10 +33,28 @@ var ListView = React.createClass({
 		}
 		coll.on("sync", updateState)
 	},
+	_filterForNews: function() {
+		var decider = function(model) {
+			return model.get("type_of_material") === "News" ? true : false
+		}
+		var newsOnlyColl = this.props.collection.filter(decider)
+		this.setState({
+			collection: newsOnlyColl
+		})
+	},
+	_showAll: function() {
+		this.setState({
+			collection:this.props.collection
+		})
+	},
 	render: function(){
 		return (
 			<div className="list-view">
 				<Header />
+				<div className="buttons">
+					<button onClick={this._filterForNews}>news only</button>
+					<button onClick={this._showAll}>all</button>
+				</div>
 				<ArticleContainer 
 					collection={this.state.collection} 
 					loaded={this.state.isLoaded}
@@ -55,14 +73,18 @@ var ArticleContainer = React.createClass({
 		}
 		return jsxArray
 	},
+	_makeArticle: function(singleModel) {
+		return <Article model={singleModel} />
+	},
 	render: function(){
 		var styleObject = {
-			display: this.props.loaded? 'none' : 'inline'
+			display: this.props.loaded ? 'none' : 'inline'
 		}
+		console.log(this.props.loaded)
 		return(
 			<div className="article-container">
 				<img src="loading.gif" style={styleObject} />
-				{this._makeArticles()}
+				{this.props.collection.map(this._makeArticle)}
 			</div>
 			)
 	}

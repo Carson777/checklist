@@ -19,6 +19,13 @@ header {
 	}
 }
 
+.buttons {
+	text-align: center;
+	button {
+		font-size: 24px;
+	}
+}
+
 p {
 	text-transform: uppercase;
 	color: $primary-color;

@@ -39,16 +39,13 @@ var app = function() {
 		},
 		handleHome: function(){
 			var articleCollection = new ArticleCollection()
-			var promise = articleCollection.fetch({
+			articleCollection.fetch({
 				data:{
 					'api-key': articleCollection._key
 				}
 			})
-			console.log(articleCollection)
-			promise.then(
-				function(){
-					ReactDOM.render(<ListView collection={articleCollection} />, document.querySelector(".container"))
-				})
+			
+			ReactDOM.render(<ListView collection={articleCollection} />, document.querySelector(".container"))
 
 			// same as
 			// var testResponse = function() {
