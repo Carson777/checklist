@@ -2,27 +2,30 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
 import ListView from './views/listView'
-import DetailView from './views/detailView'
+import DoneView from './views/doneView'
+import UnfinishedView from './views/unfinishedView'
+import STORE from './store'
 
 var app = function() {
 	var Controller = Backbone.Router.extend({
 		routes: {
-			'home': 'handleHome',
-			'search/:term': 'handleSearch',
-			'detail/:id': 'handleDetail',
+			'all': 'handleAll',
+			'done': 'handleDone',
+			'unfinished': 'handleUnfinished',
 			'*default': 'handleDefault'
 		},
-		handleHome: function(){
-			ReactDOM.render(<ListView />, document.querySelector(".container"))
+		handleAll: function(){
+			ReactDOM.render(<ListView/>, document.querySelector(".container"))
 		},
-		handleSearch: function(){
-			ReactDOM.render(<ListView />, document.querySelector(".container"))
+		handleDone: function(){
+			ReactDOM.render(<DoneView/>, document.querySelector(".container"))
+			STORE._emitChange()
 		},
-		handleDetail: function(){
-			ReactDOM.render(<DetailView />, document.querySelector(".container"))
+		handleUnfinished: function(){
+			ReactDOM.render(<UnfinishedView/>, document.querySelector(".container"))
 		},
 		handleDefault: function(){
-			location.hash = 'home'
+			location.hash = 'all'
 		},
 		initialize: function(){
 			Backbone.history.start()

@@ -4,19 +4,25 @@ import STORE from "./store"
 import {ArticleCollection,ArticleModel} from "./models/models"
 
 var ACTIONS = {
-	fetchArticles: function() {
-		var coll = STORE._get("collection")
-		coll.fetch({
-			data: {
-				"api-key": coll._key
-			}
-		})
-	},
-
-	setFocusId: function(articleId) {
+	addTask: function(newObj){
+		console.log("adding task")
 		STORE._set({
-			focusArticleId: articleId
+			tasks: STORE._get('tasks').concat([newObj])
 		})
+
+	},
+	_objConverter: function(taskName){
+		var newObj = {'task': taskName,
+						'done': 'false'}
+		this.addTask(newObj)
+	},
+	_setStatus: function(e){
+		var currentTask = e.target.id
+		STORE._update({'task': currentTask,
+				'done': 'true'}, currentTask)
+	},
+	_changeHash: function(e){
+		location.hash = e.target.id
 	}
 }
 export default ACTIONS

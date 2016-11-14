@@ -2,7 +2,7 @@ import React from "react"
 import STORE from "../store"
 import ACTIONS from "../actions"
 
-var ListView = React.createClass({	
+var UnfinishedView = React.createClass({	
 	componentWillMount: function() {
 		STORE.on("updateState", () => {
 			this.setState(STORE._getData())
@@ -22,7 +22,7 @@ var ListView = React.createClass({
 		console.log(this.state)
 		return (
 			<div className="list-view">
-				<p>All Tasks</p>
+				<p>Uncompleted Tasks</p>
 				<input onKeyDown = {this._readInput}/>
 				<button id='All' onClick={ACTIONS._changeHash}>All</button>
 				<button id='done' onClick={ACTIONS._changeHash}>Done</button>
@@ -32,7 +32,6 @@ var ListView = React.createClass({
 		)
 	}
 })
-
 var ListContainer = React.createClass({
 	render: function(){
 		return (
@@ -43,19 +42,29 @@ var ListContainer = React.createClass({
 	}
 
 })
-
 var Task = React.createClass({
 	render: function(){
 		var self = this
-		return (
-			<div className="taskContainer">
-				<p className="task">{this.props.data.task}</p>
-				<button className="taskButton" id={self.props.data.task} onClick={ACTIONS._setStatus}/>
-				
-			</div>
-		)
+		if(this.props.data.done === 'false'){
+			return (
+				<div className="taskContainer">
+					<p className="task">{this.props.data.task}</p>
+					<button className="taskButton" id={self.props.data.task} onClick={ACTIONS._setStatus}/>
+					
+				</div>
+			)
+		} else {
+			return (
+				null
+			)
+		}
 	}
 })
 
 
-export default ListView
+
+
+
+
+
+export default UnfinishedView
